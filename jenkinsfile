@@ -2,13 +2,14 @@ pipeline{
     agent any 
     
     stages{
-        stage('cleanup workspace') {
+        stage('Cleanup workspace'){
             steps{
                 script{
                     cleanWs()
 
                 }
             }
+        }
             stages{
                 stage('Checkout SCM') {
                     steps{
@@ -23,4 +24,3 @@ pipeline{
             }
         }
     }
-}
