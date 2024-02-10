@@ -1,6 +1,11 @@
 pipeline {
 
     agent any 
+    environment{
+        APP_NAME = "GitOps-ArgoCD"
+        IMAGE_TAG = "$(BUILD_NUMBER)"
+        IMAGE_NAME = "$(DOCKER_USERNAME)" + "/" + "$(APP_NAME)"
+    }
 
     stages{
 
@@ -11,6 +16,26 @@ pipeline {
                 script{
                     
                     cleanWs()
+                }
+            }
+        }
+        stage('Checkout SCM') {
+
+            steps{
+
+                script{
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/mshow1980/Scion-Scope']])
+
+                }
+            }
+
+        }
+        stage('Build Docker Image') {
+
+            steps{
+                script{
+                    build propagate: false, job: 'GitOps-ArgoCD'
+
                 }
             }
         }
