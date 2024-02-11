@@ -67,6 +67,7 @@ pipeline{
                             git config --global user.email "mshow1980@aol.com"
                             git add deployment.yaml
                             git commit -m 'updated image-version'
+                            pwd
                             """
                             withCredentials([string(credentialsId: 'Password', variable: 'password')]) {
                                 }
