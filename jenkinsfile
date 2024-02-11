@@ -47,7 +47,7 @@ pipeline{
                     }
                 
                 }
-                stage(updating k8 manifest) {
+                stage('updating k8 manifest') {
                     steps{
                         script{
                             sh """
