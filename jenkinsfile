@@ -2,6 +2,7 @@ pipeline{
     agent any 
     environment{
         APP_NAME = 'argocd_project'
+        APP_TAG = "$(BUILD_NUMBER)"
     }
     stages{
         stage('Cleanup workspace') {
@@ -23,7 +24,7 @@ pipeline{
                 stage('Docker Build') {
                     steps{
                         script{
-                            sh 'docker build -t mshow1980/${APP_NAME}:$BUILD_NUMBER .'
+                            sh 'docker build -t mshow1980/${APP_NAME}:${BUILD_NUMBER} .'
                         }
                     }
                 }
@@ -39,9 +40,9 @@ pipeline{
                 stage('docker push') {
                     steps{
                         script{
-                            sh 'docker push  mshow1980/${APP_NAME}:$BUILD_NUMBER'
+                            sh 'docker push  mshow1980/${APP_NAME}:${APP_TAG}'
                             sh 'docker logout'
-                            sh 'docker rmi mshow1980/${APP_NAME}:$BUILD_NUMBER'
+                            sh 'docker rmi mshow1980/${APP_NAME}:${APP_TAG}'
                         }
                     }
                 
