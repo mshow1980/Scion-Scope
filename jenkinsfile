@@ -2,6 +2,8 @@ pipeline{
     agent any 
     environment{
         APP_NAME =  'flex'
+    }
+
         stage('Cleanup workspace'){
             steps{
                 script{
@@ -45,4 +47,3 @@ pipeline{
                 
                 }
             }
-    }
