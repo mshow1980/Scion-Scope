@@ -47,7 +47,7 @@ pipeline{
                     }
                 
                 }
-                stage('updating k8 manifest') {
+                stage('updating k8 image-version') {
                     steps{
                         script{
                             sh """
@@ -56,6 +56,17 @@ pipeline{
                             cat deployment.yaml
                             """ 
 
+                        }
+                    }
+                }
+                stage('pushing update image-version to github') {
+                    steps{
+                        script{
+                            sh """
+                            git add .
+                            git commit -m 'updated image-version'
+                            git push -u 
+                            """
                         }
                     }
                 }
