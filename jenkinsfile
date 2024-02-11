@@ -26,9 +26,9 @@ pipeline{
                 stage('Build Docker Image') {
                     steps{
                         script{
+                            sh 'docker build -t mshow1980/mynewapp:$BUILD_NUMBER .'
                             withCredentials([usernameColonPassword(credentialsId: 'mshow1980', variable: 'Docker')]) {
                             }
-                            sh 'docker build -t mshow1980/mynewapp:$BUILD_NUMBER .'
                             sh 'docker push mshow1980/mynewapp:$BUILD_NUMBER'
                             sh 'docker logout'
 
