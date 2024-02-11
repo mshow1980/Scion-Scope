@@ -67,7 +67,7 @@ pipeline{
                             git add .
                             git commit -m 'updated image-version'
                             git branch
-                            git push -u master main
+                            git push -u detached HEAD
                             """
                         }
                     }
