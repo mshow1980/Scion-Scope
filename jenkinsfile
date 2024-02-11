@@ -24,7 +24,7 @@ pipeline{
                 stage('Docker Build') {
                     steps{
                         script{
-                            sh 'docker build -t mshow1980/${APP_NAME}:${BUILD_NUMBER} .'
+                            sh 'docker build -t mshow1980/${APP_NAME}:${APP_TAG} .'
                         }
                     }
                 }
