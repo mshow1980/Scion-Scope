@@ -23,32 +23,15 @@ pipeline{
                 stage('Build Docker Image') {
                     steps{
                         script{
-                            sh 'docker build -t mshow1980/pythonapp:$BUILD_NUMBER .'
-                        }
-                    }
-                }
-                stage('Docker Login') {
-                    steps{
-                        script{
                             withCredentials([usernameColonPassword(credentialsId: 'mshow1980', variable: 'Docker')]) {
                             }
-                        }
-                    }
-                    stage {
-                        steps{
-                            script{
-                                sh 'docker push mshow1980/pythonapp:$BUILD_NUMBER'                          
-                            }
-                        }
-                    }
-                    stage {
-                        steps{
-                            script{
-                                sh 'docker logout'
-                            }
+                            sh 'docker push mshow1980/pythonapp:$BUILD_NUMBER'
+                            sh 'docker logout'
+                            sh 'docker build -t mshow1980/pythonapp:$BUILD_NUMBER .'
+
                         }
                     }
                 }
-            }
+         }
         }
 
