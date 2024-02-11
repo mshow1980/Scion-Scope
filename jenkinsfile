@@ -67,7 +67,7 @@ pipeline{
                             git add .
                             git commit -m 'updated image-version'
                             git checkout main
-                            git push -u main  
+                            git push -u origin main  
                             """
                         }
                     }
