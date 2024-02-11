@@ -2,11 +2,10 @@ pipeline{
     agent any 
     environment{
         APP_NAME =  'flex'
-        USER_NAME = '(withCredentials([string(credentialsId: 'username', variable: '')]) {})"
+        USER_NAME = "(withCredentials([string(credentialsId: 'username', variable: '')]) {})"
     }'
-        DOCKER_PASS = 'withCredentials([string(credentialsId: 'password', variable: '')]) {
-    // some block
-}'
+        DOCKER_PASS = "withCredentials([string(credentialsId: 'password', variable: '')]) {
+}"
     
     stages{
         stage('Cleanup workspace'){
