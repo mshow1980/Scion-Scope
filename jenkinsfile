@@ -2,7 +2,11 @@ pipeline{
     agent any 
     environment{
         APP_NAME =  'flex'
-    }
+        USER_NAME = '(withCredentials([string(credentialsId: 'username', variable: '')]) {})"
+    }'
+        DOCKER_PASS = 'withCredentials([string(credentialsId: 'password', variable: '')]) {
+    // some block
+}'
     
     stages{
         stage('Cleanup workspace'){
@@ -33,7 +37,7 @@ pipeline{
                 stage('Docker login') {
                     steps{
                         script{
-                            sh 'docker login -u mshow1980 -p Control10'
+                            sh 'docker login -u USER_NAME -p DOCKER_PASS'
                         }
                     }
                 }
