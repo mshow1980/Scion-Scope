@@ -2,7 +2,7 @@ pipeline{
     agent any 
     environment{
         APP_NAME = 'argocd_project'
-        APP_TAG = 'BUILD_NUMBER'
+        APP_TAG = '$BUILD_NUMBER'
     }
     stages{
         stage('Cleanup workspace') {
