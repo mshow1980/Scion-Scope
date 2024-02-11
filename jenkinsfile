@@ -47,6 +47,18 @@ pipeline{
                     }
                 
                 }
+                stage(updating k8 manifest) {
+                    steps{
+                        script{
+                            sh """
+                            cat deployment.yaml 
+                            sed -i 's${APP_NAME}.*/${APP_NAME}:${APP_TAG}/g' deployment.yaml
+                            cat deployment.yaml
+                            """ 
+
+                        }
+                    }
+                }
             }
         }
     
