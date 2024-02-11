@@ -31,8 +31,8 @@ pipeline{
                     steps{
                         script{
                             withCredentials([usernamePassword(credentialsId: 'ForDocker', passwordVariable: 'Docker-Pass', usernameVariable: 'Docker-User')]) {
-                            }
-                            sh 'docker login -u Docker-User -p Docker-Pass'     
+                                sh 'docker login -u Docker-User -p Docker-Pass' 
+                            }    
                         }
                     }
                 }
