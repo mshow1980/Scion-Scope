@@ -23,7 +23,7 @@ pipeline{
                 stage('Docker Build') {
                     steps{
                         script{
-                            sh 'docker build -t mshow1980/APP_NAME:$BUILD_NUMBER .'
+                            sh 'docker build -t mshow1980/${APP_NAME}:$BUILD_NUMBER .'
                         }
                     }
                 }
@@ -39,7 +39,7 @@ pipeline{
                 stage('docker push') {
                     steps{
                         script{
-                            sh 'docker push  mshow1980/APP_NAME:$BUILD_NUMBER'
+                            sh 'docker push  mshow1980/${APP_NAME}:$BUILD_NUMBER'
                         }
                     }
                 
