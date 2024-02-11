@@ -20,6 +20,21 @@ pipeline{
                         }
                     }
                 }
+                stage('Build Docker Image') {
+                    steps{
+                        script{
+                            sh 'docker build -t mshow1980/GitOps-ArgoCD:$BUILD_NUMBER .'
+                        }
+                    }
+                }
+                stage('Docker Login') {
+                    steps{
+                        script{
+                            withDockerRegistry(credentialsId: 'mshow1980', url: 'https://hub.docker.com') {
+                            }
+                        }
+                    }
+                }
             }
         }
 
