@@ -68,13 +68,10 @@ pipeline{
                             git checkout -b main
                             git add deployment.yaml
                             git commit -m 'updated image-version'
-                            git remote
-                            git status 
-
                             """
                             withCredentials([string(credentialsId: 'Password', variable: 'password')]) {
                                 }
-                            sh 'git push "git@github.com:mshow1980/Scion-Scope.git" main origin'
+                            sh 'git push -u origin main'
                         }
                     }
                 }
