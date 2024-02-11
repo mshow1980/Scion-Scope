@@ -30,7 +30,7 @@ pipeline{
                 stage('Docker Login') {
                     steps{
                         script{
-                            withDockerRegistry(credentialsId: 'mshow1980', url: 'https://hub.docker.com') {
+                            withCredentials([usernameColonPassword(credentialsId: 'mshow1980', variable: 'Docker')]) {
                             }
                         }
                     }
