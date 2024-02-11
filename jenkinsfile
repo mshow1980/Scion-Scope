@@ -65,13 +65,14 @@ pipeline{
                             sh """
                             git config --global user.name "mshow1980"
                             git config --global user.email "mshow1980@aol.com"
+                            git checkout -b main
                             git add deployment.yaml
                             git commit -m 'updated image-version'
 
                             """
                             withCredentials([string(credentialsId: 'Password', variable: 'password')]) {
                                 }
-                            sh 'git push -u main'
+                            sh 'git push origin main'
                         }
                     }
                 }
