@@ -1,27 +1,25 @@
 pipeline{
     agent any 
     environment{
-        APP_NAME =  'flex'
+        APP_NAME = 'flex'
     }
-
-        stage('Cleanup workspace'){
+    stages{
+        stage('Cleanup workspace') {
             steps{
                 script{
                     cleanWs()
-
                 }
             }
         }
-                stage('Checkout SCM') {
-                    steps{
-                        script{
-                            checkout scmGit(branches: [[name: '*/main']],\
-                            extensions: [], \
-                            userRemoteConfigs: [[url: 'https://github.com/mshow1980/Scion-Scope']])
-
-                        }
+        stage('Checkout SCM') {
+            steps{
+                script{
+                    checkout scmGit(branches: [[name: '*/main']],\
+                    extensions: [], \
+                    userRemoteConfigs: [[url: 'https://github.com/mshow1980/Scion-Scope']])
                     }
                 }
+            }
                 stage('Docker Build') {
                     steps{
                         script{
