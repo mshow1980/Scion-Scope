@@ -23,7 +23,7 @@ pipeline{
                 stage('Build Docker Image') {
                     steps{
                         script{
-                            sh 'docker build -t mshow1980/GitOps-ArgoCD:$BUILD_NUMBER .'
+                            sh 'docker build -t mshow1980/gitOps-argocd:$BUILD_NUMBER .'
                         }
                     }
                 }
