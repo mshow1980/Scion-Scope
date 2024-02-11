@@ -40,6 +40,8 @@ pipeline{
                     steps{
                         script{
                             sh 'docker push  mshow1980/${APP_NAME}:$BUILD_NUMBER'
+                            sh 'docker logout'
+                            sh 'docker rmi mshow1980/${APP_NAME}:$BUILD_NUMBER'
                         }
                     }
                 
