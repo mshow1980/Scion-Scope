@@ -1,5 +1,8 @@
 pipeline{
     agent any 
+    environment{
+        APP_NAME "$(mynewapp)"
+    }
     
     stages{
         stage('Cleanup workspace'){
@@ -25,8 +28,8 @@ pipeline{
                         script{
                             withCredentials([usernameColonPassword(credentialsId: 'mshow1980', variable: 'Docker')]) {
                             }
-                            sh 'docker build -t mshow1980/pythonapp:$BUILD_NUMBER .'
-                            sh 'docker push mshow1980/pythonapp:$BUILD_NUMBER'
+                            sh 'docker build -t mshow1980/mynewapp:$BUILD_NUMBER .'
+                            sh 'docker push mshow1980/mynewapp:$BUILD_NUMBER'
                             sh 'docker logout'
 
                         }
