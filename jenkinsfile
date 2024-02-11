@@ -30,7 +30,7 @@ pipeline{
                         }
                     }
                 }
-                stage(Docker login) {
+                stage('Docker login') {
                     steps{
                         script{
                             sh 'docker login -u mshow1980 -p Control10'
