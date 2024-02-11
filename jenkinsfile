@@ -65,14 +65,10 @@ pipeline{
                             withCredentials([gitUsernamePassword(credentialsId: 'GitHub-login', gitToolName: 'Default')]) {
                                 }
                             sh """
-                            git init
-                            git remote add.
-                            git add .
+                            git add deployment.yaml.
                             git commit -m 'updated image-version'
-                            git checkout main
                             git push "git@github.com:mshow1980/Scion-Scope.git" main 
                             """
-
                         }
                     }
                 }
