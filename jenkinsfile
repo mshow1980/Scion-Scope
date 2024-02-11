@@ -63,9 +63,10 @@ pipeline{
                     steps{
                         script{
                             sh """
+                            git remote add master git@github.com:mshow1980/Scion-Scope.git
                             git add .
                             git commit -m 'updated image-version'
-                            git push main main
+                            git push -u master main
                             """
                         }
                     }
