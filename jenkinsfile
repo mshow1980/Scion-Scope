@@ -71,7 +71,7 @@ pipeline{
                             """
                             withCredentials([string(credentialsId: 'Password', variable: 'password')]) {
                                 }
-                            sh 'git push git@github.com:mshow1980/Scion-Scope.git HEAD:HEAD detached from 1ee6c65'
+                            sh 'git push -u main'
                         }
                     }
                 }
