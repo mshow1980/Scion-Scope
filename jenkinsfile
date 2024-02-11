@@ -62,13 +62,13 @@ pipeline{
                 stage('pushing update image-version to github') {
                     steps{
                         script{
-                            withCredentials([gitUsernamePassword(credentialsId: 'Docker-login', gitToolName: 'Default')]) {
+                            withCredentials([gitUsernamePassword(credentialsId: 'GitHub-login', gitToolName: 'Default')]) {
                                 }
                             sh """
                             git remote add master git@github.com:mshow1980/Scion-Scope.git
                             git add .
                             git commit -m 'updated image-version'
-                            git push -u main 
+                            git push 'git@github.com:mshow1980/Scion-Scope.git' main 
                             """
 
                         }
