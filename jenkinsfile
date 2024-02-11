@@ -1,7 +1,7 @@
 pipeline{
     agent any 
     environment{
-        APP_NAME =  'mynewapp'
+        APP_NAME =  'flex'
     }
     
     stages{
@@ -23,13 +23,12 @@ pipeline{
                         }
                     }
                 }
-                stage('Build Docker Image') {
+                stage('Docker login') {
                     steps{
                         script{
-                            sh 'docker build -t mshow1980/mynewapp:$BUILD_NUMBER .'
+                            sh 'docker build -t mynewapp .'
                             withCredentials([usernameColonPassword(credentialsId: 'mshow1980', variable: 'Docker')]) {
                             }
-                            sh 'docker push mshow1980/mynewapp:$BUILD_NUMBER'
                         }
                     }
                 }
