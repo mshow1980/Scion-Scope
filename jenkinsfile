@@ -62,13 +62,15 @@ pipeline{
                 stage('pushing update image-version to github') {
                     steps{
                         script{
-                            withCredentials([gitUsernamePassword(credentialsId: 'GitHub-login', gitToolName: 'Default')]) {
-                                }
                             sh """
+                            git config --global user.name "mshow1980"
+                            git config --global user.email "mshow1980@aol.com"
                             git add deployment.yaml
                             git commit -m 'updated image-version'
-                            git push "git@github.com:mshow1980/Scion-Scope.git" main 
                             """
+                            withCredentials([string(credentialsId: 'Password', variable: 'password')]) {
+                                }
+                            sh 'git push "git@github.com:mshow1980/Scion-Scope.git" main '
                         }
                     }
                 }
