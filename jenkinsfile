@@ -30,8 +30,6 @@ pipeline{
                             withCredentials([usernameColonPassword(credentialsId: 'mshow1980', variable: 'Docker')]) {
                             }
                             sh 'docker push mshow1980/mynewapp:$BUILD_NUMBER'
-                            sh 'docker logout'
-
                         }
                     }
                 }
