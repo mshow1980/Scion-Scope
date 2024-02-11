@@ -65,7 +65,7 @@ pipeline{
                             sh """
                             git add .
                             git commit -m 'updated image-version'
-                            git push -u main
+                            git push "git@github.com:mshow1980/Scion-Scope.git" main
                             """
                         }
                     }
