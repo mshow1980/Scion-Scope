@@ -69,6 +69,7 @@ pipeline{
                             git add deployment.yaml
                             git commit -m 'updated image-version'
                             git remote
+                            git status 
 
                             """
                             withCredentials([string(credentialsId: 'Password', variable: 'password')]) {
