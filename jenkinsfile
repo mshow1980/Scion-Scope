@@ -38,7 +38,12 @@ pipeline{
                     }
                 }
                 stage('docker push') {
-                    sh 'docker push  mshow1980/mynewapp:$BUILD_NUMBER'
+                    steps{
+                        script{
+                            sh 'docker push  mshow1980/mynewapp:$BUILD_NUMBER'
+                        }
+                    }
+                
                 }
             }
         }
