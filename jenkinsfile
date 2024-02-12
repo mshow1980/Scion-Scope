@@ -68,11 +68,11 @@ pipeline{
                             git add deployment.yaml
                             git commit -m 'updated image-version'
                             git push master/main
-                                git config pull.rebase false     
-                                git pull origin main
-                                git add deployment.yaml
-                                git commit -m "updated manifest"
-                                git push 
+//                                git config pull.rebase false     
+//                                git pull origin main
+//                                git add deployment.yaml
+//                                git commit -m "updated manifest"
+//                                git push 
                             """
                             }
                         }
