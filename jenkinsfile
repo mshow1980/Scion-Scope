@@ -64,7 +64,8 @@ pipeline{
                     steps{
                         script{
                             
-                            sshagent(['0f2e09df-db1a-4f4e-b06a-bd00946927b0']) {
+                            sshagent(['0f2e09df-db1a-4f4e-b06a-bd00946927b0',
+                            url: 'ssh://git@github.com:mshow1980/Scion-Scope.git']) {
                             sh """
                             git checkout -b main
                             git add deployment.yaml
