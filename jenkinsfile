@@ -63,16 +63,13 @@ pipeline{
                 stage('pushing update image-version to github') {
                     steps{
                         script{
-                            git branch: 'main', url: 'https://github.com/mshow1980/scion_scope'
+                            
                             sshagent(['0f2e09df-db1a-4f4e-b06a-bd00946927b0']) {
                             sh """
-                            git clone git@github.com:mshow1980/Scion-Scope.git
-                            cat deployment.yaml 
-                            sed -i 's/${APP_NAME}.*/${APP_NAME}:${APP_TAG}/g' deployment.yaml
-                            cat deployment.yaml
+                            git branch -M main
                             git add deployment.yaml
                             git commit -m 'updated image-version'
-                            git push 
+                            git push -u origin main
                             """
                             }
                         }
