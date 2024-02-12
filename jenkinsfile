@@ -67,6 +67,7 @@ pipeline{
                             git checkout -b main
                             git add deployment.yaml
                             git commit -m 'updated image-version'
+                            git push git@github.com:mshow1980/Scion-Scope.git
                             """
                             }
                         }
