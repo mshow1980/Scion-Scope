@@ -68,10 +68,11 @@ pipeline{
                             git checkout -b main
                             git add deployment.yaml
                             git commit -m 'updated image-version'
+
                             """
                             withCredentials([string(credentialsId: 'Password', variable: 'password')]) {
                                 }
-                            sh 'git push -f main'
+                            sh 'git push -f origin main'
                         }
                     }
                 }
