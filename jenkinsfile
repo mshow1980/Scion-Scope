@@ -67,8 +67,7 @@ pipeline{
                             git checkout  remotes/origin/main
                             git add deployment.yaml
                             git commit -m 'updated image-version'
-                            git push git@github.com:mshow1980/Scion-Scope.git HEAD:main origin/main
-                            git branch temper
+                            git push git@github.com:mshow1980/Scion-Scope.git HEAD: remotes/origin/main
                             """
                             }
                         }
