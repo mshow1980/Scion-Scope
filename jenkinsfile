@@ -64,10 +64,15 @@ pipeline{
                         script{
                             sshagent(['0f2e09df-db1a-4f4e-b06a-bd00946927b0']) {
                             sh """
-                            git remote add master git@github.com:mshow1980/Scion-Scope.git
-                            git add deployment.yaml
-                            git commit -m 'updated image-version'
-                            git push master/main
+            //                git remote add master git@github.com:mshow1980/Scion-Scope.git
+       //                     git add deployment.yaml
+         //                   git commit -m 'updated image-version'
+     //                       git push master/main
+                                git config pull.rebase false     
+                                git pull origin main
+                                git add deployment.yaml
+                                git commit -m "updated manifest"
+                                git push 
                             """
                             }
                         }
