@@ -3,6 +3,7 @@ pipeline{
     environment{
         APP_NAME = 'argocd_project'
         APP_TAG = "${BUILD_NUMBER}"
+        BRANCH_NAME = 'main'
     }
     stages{
         stage('Cleanup workspace') {
@@ -64,10 +65,10 @@ pipeline{
                         script{
                             sshagent(['0f2e09df-db1a-4f4e-b06a-bd00946927b0']) {
                             sh """
-                            git checkout  remotes/origin/main
+                            git checkout -b ${BRANCH_NAME}
                             git add deployment.yaml
                             git commit -m 'updated image-version'
-                            git push git@github.com:mshow1980/Scion-Scope.git HEAD: remotes/origin/main
+                            git push  remotes/origin/main
                             """
                             }
                         }
