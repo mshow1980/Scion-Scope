@@ -68,7 +68,7 @@ pipeline{
                             git checkout -b ${BRANCH_NAME}
                             git add deployment.yaml
                             git commit -m 'updated image-version'
-                            git push  remotes/origin/main
+                            git push  -u origin main
                             """
                             }
                         }
