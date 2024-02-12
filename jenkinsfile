@@ -64,10 +64,11 @@ pipeline{
                         script{
                             sshagent(['0f2e09df-db1a-4f4e-b06a-bd00946927b0']) {
                             sh """
+                            git checkout  remotes/origin/main
                             git add deployment.yaml
                             git commit -m 'updated image-version'
-                            git checkout  remotes/origin/main
-                            git push git@github.com:mshow1980/Scion-Scope.git HEAD: origin/main
+                            git push git@github.com:mshow1980/Scion-Scope.git HEAD: main
+                            git branch temper
                             """
                             }
                         }
