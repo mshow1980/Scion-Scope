@@ -62,11 +62,8 @@ pipeline{
                 stage('pushing update image-version to github') {
                     steps{
                         script{
-                            withCredentials([string(credentialsId: 'Git-pass', variable: 'Git-password')]) {
+                            sshagent(['0f2e09df-db1a-4f4e-b06a-bd00946927b0']) {
                             sh """
-                            git config --global user.name "mshow1980"
-                            git config --global user.email "mshow1980@aol.com"
-                            git config -- global user.password "Git-password"
                             git checkout -b main
                             git add deployment.yaml
                             git commit -m 'updated image-version'
