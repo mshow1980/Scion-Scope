@@ -71,7 +71,7 @@ pipeline{
                             """
                             withCredentials([string(credentialsId: 'Password', variable: 'password')]) {
                                 }
-                            sh 'git push -f origin/main'
+                            sh 'git push -f main'
                         }
                     }
                 }
