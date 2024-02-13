@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: flask
-        image: mshow1980/argocd_project:v1
+        image: mshow1980/argo_sample:v1
         ports:
         - containerPort: 5000

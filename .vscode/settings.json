@@ -3,7 +3,7 @@
         "argo_sample": {
             "isDefault": true,
             "runWith": ["jenkins-master"],
-            "name": "argo_samplet",
+            "name": "argo_sample",
         }
     },
     "jenkins-runner.hostConfigs": {
