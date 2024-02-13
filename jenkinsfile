@@ -69,10 +69,9 @@ pipeline{
                             git add deployment.yaml 
                             git commit -m 'updating deployment file'
                             """
-                            withCredentials([usernamePassword(credentialsId: 'Git-login', passwordVariable: 'gitpass', usernameVariable: 'gituser')]) {
-                                sh "git push https://github.com/mshow1980/Scion-Scope.git origin/main"
+                            sshagent(['3881282e-c540-4198-9774-957896b9cd35']) {
+                                sh "git push git@github.com:mshow1980/Scion-Scope.git origin/main"
                                 }
-
                             }
                         }
                     }
