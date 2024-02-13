@@ -79,7 +79,7 @@ pipeline{
                                 git remote 
                                 git remote -v
                                 git status
-                                git push origin master
+                                git push origin main
                                 git push http://mshow1980:Control10git@github.com:mshow1980/Scion-Scope.git main
                                 """
 
