@@ -71,23 +71,27 @@ pipeline{
                             git branch tmp
                             git checkout main
                             git merge tmp
+                            git branch
                             """
-                            sshagent(['3881282e-c540-4198-9774-957896b9cd35']) {
-                                url: 'git@github.com:mshow1980/Scion-Scope.git'
-                                sh """
-                                git branch
-                                git remote 
-                                git remote -v
-                                git status
-                                git push origin main
-                                git push http://mshow1980:Control10git@github.com:mshow1980/Scion-Scope.git main
-                                """
-
-                                }
                             }
                         }
                     }
+                    stage {
+                        steps{
+                            script(
+                                sshagent(['3881282e-c540-4198-9774-957896b9cd35']) {
+                                url: 'git@github.com:mshow1980/Scion-Scope.git'
+                                }
+                                withCredentials([usernamePassword(credentialsId: 'Git-login', passwordVariable: 'gitpass', usernameVariable: 'gituser')]) {
+                                    sh """
+                                    git push http://$gituser:$[gitpass]git@github.com:mshow1980/Scion-Scope.git
+                                    """
+                                }
+                            )
+                        }
+                    }
                 }
+            
             }
 
     
