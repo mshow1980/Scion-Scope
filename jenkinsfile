@@ -68,7 +68,9 @@ pipeline{
                             git config --global user.email "mshow1980@aol.com"
                             git add deployment.yaml 
                             git commit -m 'updating deployment file'
-                            git branch
+                            git branch tmp
+                            git checkout master
+                            git merge tmp
                             git remote -v
                             git remote 
                             """
