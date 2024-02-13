@@ -1,14 +1,14 @@
 {
     "jenkins-runner.jobs": {
-        "argocd_project": {
+        "argo_sample": {
             "isDefault": true,
             "runWith": ["jenkins-master"],
-            "name": "argocd_project",
+            "name": "argo_samplet",
         }
     },
     "jenkins-runner.hostConfigs": {
         "jenkins-master": {
-            "url": "http://3.236.107.126:8080",
+            "url": "http://54.224.17.34:8080",
             "user": "Scion_Scope",
             "password": "Control10"
         }
