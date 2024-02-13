@@ -70,7 +70,7 @@ pipeline{
                             git commit -m 'updating deployment file'
                             """
                             withCredentials([usernamePassword(credentialsId: 'Git-login', passwordVariable: 'gitpass', usernameVariable: 'gituser')]) {
-                                sh "git push http://$gituser:$gitpass@github.com:mshow1980/Scion-Scope.git main"
+                                sh "git push http://$gituser:$[gitpass]@github.com:mshow1980/Scion-Scope.git main"
                                 }
 
                             }
