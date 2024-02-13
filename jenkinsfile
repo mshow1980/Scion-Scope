@@ -68,6 +68,9 @@ pipeline{
                             git config --global user.email "mshow1980@aol.com"
                             git add deployment.yaml 
                             git commit -m 'updating deployment file'
+                            git branch
+                            git remote -v
+                            git remote 
                             """
                             sshagent(['3881282e-c540-4198-9774-957896b9cd35']) {
                                 sh "git push git@github.com:mshow1980/Scion-Scope.git main"
