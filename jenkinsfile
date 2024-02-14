@@ -3,7 +3,7 @@ pipeline{
     environment{
         APP_NAME = 'argo_sample'
         APP_TAG = "${BUILD_NUMBER}"
-        BRANCH_NAME = 'main'
+        BRANCH_NAME = 'master'
     }
     stages{
         stage('Cleanup workspace') {
@@ -16,12 +16,10 @@ pipeline{
         stage('Checkout SCM') {
             steps{
                 script{
-                    checkout scmGit(branches: [[name: '*/main']],\
-                    extensions: [], \
-                    userRemoteConfigs: [[url: 'https://github.com/mshow1980/Scion-Scope']])
-                    }
+                    git branch: 'master', url: 'https://github.com/mshow1980/Scion-Scope.git'
                 }
             }
+        }
                 stage('Docker Build') {
                     steps{
                         script{
@@ -32,8 +30,8 @@ pipeline{
                 stage('Docker login') {
                     steps{
                         script{
-                            withCredentials([usernamePassword(credentialsId: 'DockerUsser', passwordVariable: 'dockerpass', usernameVariable: 'dockeruser')]) {
-                                sh 'docker login -u ${dockeruser} -p ${dockerpass}'
+                            withCredentials([usernamePassword(credentialsId: 'Docker-logg', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                                sh 'docker login -u ${user} --p ${pass}'
                                 }
                         }
                     }
@@ -66,22 +64,14 @@ pipeline{
                             sh """
                             git config --global user.name "mshow1980"
                             git config --global user.email "mshow1980@aol.com"
-                            git add deployment.yaml 
-                            git commit -m 'updating deployment file'
-                            git branch tmp
-                            git checkout main
-                            git merge tmp
-                            git branch
+                            git add deployment.yaml
+                            git commit -m 'updated deployment file' 
                             """
-                            sshagent(['3881282e-c540-4198-9774-957896b9cd35']) {
-                            }
-                            withCredentials([usernamePassword(credentialsId: 'Git-login', passwordVariable: 'gitpass', usernameVariable: 'gituser')]) { 
-                                sh "git push http://$gituser:[gitpass]@github.com:mshow1980/Scion-Scope.git  main"         
-                            }
+                            withCredentials([usernamePassword(credentialsId: 'gitlog', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                                sh 'git push http://$user:$pass@github.com/mshow1980/Scion-Scope.git master'
+                                }
                         }
                     }
                 }
                 }
             }
-
-    
